@@ -1,11 +1,11 @@
-const rangeSlider = document.querySelector(".slider-container .price-slider");
+const rangeSlider = document.querySelector(".range-slider");
 // текстовые инпуты:
-const priceInputs = document.querySelectorAll(".price-input input");
+const priceInputs = document.querySelectorAll(".price-inputs-wrap input");
 textInputMin = document.querySelector(".min-input");
 textInputMax = document.querySelector(".max-input");
 
 // рендж инпуты:
-const rangeInputs = document.querySelectorAll(".range-input input");
+const rangeInputs = document.querySelectorAll(".range-inputs-wrap input");
 rangeInputMin = document.querySelector(".min-range");
 rangeInputMax = document.querySelector(".max-range");
 
@@ -43,21 +43,21 @@ priceInputs.forEach((input) => {
     let maxVal = parseInt(textInputMax.value);
     let diff = maxVal - minVal;
 
-		// ограничиваем значение min инпута:
+    // ограничиваем значение min инпута:
     if (minVal < minRange) {
       textInputMin.value = minRange;
       minVal = minRange;
       // console.log(minVal);
     }
 
-		// ограничиваем значение max инпута:
+    // ограничиваем значение max инпута:
     if (maxVal > maxRange) {
       textInputMax.value = maxRange;
       maxVal = maxRange;
       // console.log(maxVal);
     }
 
-		// ограничиваем максимальное значение min инпута:
+    // ограничиваем максимальное значение min инпута:
     if (e.target === textInputMin) {
       if (minVal > maxVal - priceGap) {
         textInputMin.value = maxVal - priceGap;
@@ -66,7 +66,7 @@ priceInputs.forEach((input) => {
       }
     }
 
-		// ограничиваем минимальное значение max инпута:
+    // ограничиваем минимальное значение max инпута:
     if (e.target === textInputMax) {
       if (maxVal < minVal + priceGap) {
         textInputMax.value = minVal + priceGap;
@@ -75,8 +75,8 @@ priceInputs.forEach((input) => {
       }
     }
 
-		// вычисляем положение рендж инпутов:
-    if (diff >= priceGap) {			
+    // вычисляем положение рендж инпутов:
+    if (diff >= priceGap) {
       rangeInputMax.value = maxVal;
       rangeInputMin.value = minVal;
       rangeSlider.style.right = `${
@@ -85,7 +85,7 @@ priceInputs.forEach((input) => {
       rangeSlider.style.left = `${
         ((minVal - minRange) * 100) / (maxRange - minRange)
       }%`;
-			// console.log("gogogogo");
+      // console.log("gogogogo");
     }
   });
 });
@@ -97,21 +97,21 @@ rangeInputs.forEach((input) => {
     let maxVal = parseInt(rangeInputMax.value);
     let diff = maxVal - minVal;
 
-		// ограничиваем значение min инпута:
+    // ограничиваем значение min инпута:
     if (minVal < minRange) {
       rangeInputMin.value = minRange;
       minVal = minRange;
       console.log(minVal);
     }
 
-		// ограничиваем значение max инпута:
+    // ограничиваем значение max инпута:
     if (maxVal > maxRange) {
       rangeInputMax.value = maxRange;
       maxVal = maxRange;
       console.log(maxVal);
     }
 
-		// ограничиваем максимальное значение min инпута:
+    // ограничиваем максимальное значение min инпута:
     if (e.target === rangeInputMin) {
       if (minVal > maxVal - priceGap) {
         rangeInputMin.value = maxVal - priceGap;
@@ -120,7 +120,7 @@ rangeInputs.forEach((input) => {
       }
     }
 
-		// ограничиваем минимальное значение max инпута:
+    // ограничиваем минимальное значение max инпута:
     if (e.target === rangeInputMax) {
       if (maxVal < minVal + priceGap) {
         rangeInputMax.value = minVal + priceGap;
@@ -129,9 +129,9 @@ rangeInputs.forEach((input) => {
       }
     }
 
-		// вычисляем положение рендж инпутов:
-    if (diff >= priceGap) {			
-			textInputMin.value = minVal;
+    // вычисляем положение рендж инпутов:
+    if (diff >= priceGap) {
+      textInputMin.value = minVal;
       textInputMax.value = maxVal;
       rangeSlider.style.right = `${
         100 - ((maxVal - minRange) * 100) / (maxRange - minRange)
@@ -139,7 +139,7 @@ rangeInputs.forEach((input) => {
       rangeSlider.style.left = `${
         ((minVal - minRange) * 100) / (maxRange - minRange)
       }%`;
-			console.log("gogogogo");
+      console.log("gogogogo");
     }
   });
 });
